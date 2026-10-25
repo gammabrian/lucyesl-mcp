@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "lucyesl",
+  "description": "LucyESL for Claude Code: live English-teaching jobs in South Korea, with salary and disclosure statistics.",
+  "owner": {
+    "name": "LucyESL",
+    "email": "hello@lucyesl.com"
+  },
+  "plugins": [
+    {
+      "name": "lucyesl",
+      "description": "Search live English-teaching jobs in South Korea and read the salary, disclosure and by-region figures LucyESL computes from the same adverts. Read-only, no key.",
+      "author": {
+        "name": "LucyESL"
+      },
+      "source": "./plugins/lucyesl",
+      "homepage": "https://lucyesl.com/developers"
+    }
+  ]
+}

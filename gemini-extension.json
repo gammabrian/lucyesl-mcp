@@ -1,0 +1,11 @@
+{
+  "name": "lucyesl",
+  "version": "1.3.0",
+  "description": "Live English-teaching jobs in South Korea, with salary, disclosure and by-region statistics. Read-only, no key.",
+  "mcpServers": {
+    "lucyesl": {
+      "httpUrl": "https://lucyesl.com/mcp"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}

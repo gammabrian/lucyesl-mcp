@@ -1,0 +1,14 @@
+{
+  "name": "lucyesl",
+  "version": "1.3.0",
+  "description": "Search live English-teaching jobs in South Korea and read the salary, disclosure and by-region figures LucyESL computes from the same adverts. Read-only, no key.",
+  "author": {
+    "name": "LucyESL",
+    "email": "hello@lucyesl.com",
+    "url": "https://lucyesl.com"
+  },
+  "homepage": "https://lucyesl.com/developers",
+  "repository": "https://github.com/gammabrian/lucyesl-mcp",
+  "license": "MIT",
+  "keywords": ["jobs", "esl", "tefl", "teaching", "south-korea", "salary"]
+}
