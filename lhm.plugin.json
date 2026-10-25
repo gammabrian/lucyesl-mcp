@@ -1,0 +1,239 @@
+{
+    "identifier": "lucyesl",
+    "name": "LucyESL",
+    "version": "1.3.0",
+    "author": "LucyESL",
+    "authorUrl": "https://lucyesl.com",
+    "cloudEndpoint": "https://lucyesl.com/mcp",
+    "description": "Live English-teaching jobs in South Korea, with the salary, disclosure and by-region figures LucyESL computes from the same adverts. Read-only, no account and no key.",
+    "homepage": "https://lucyesl.com/developers",
+    "icon": "https://lucyesl.com/assets/icon-512.png",
+    "tags": [
+        "jobs",
+        "esl",
+        "tefl",
+        "teaching",
+        "south-korea",
+        "salary"
+    ],
+    "tools": [
+        {
+            "name": "search",
+            "description": "Search live English-teaching jobs in South Korea on LucyESL with a plain-language query. Words for a region, student age, housing, schedule, visa or direct hire are read as filters. Returns up to 20 matches, each an id, a title with the employer, and the listing URL.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "What to look for, in plain words, such as \"kindergarten jobs in Seoul with housing\""
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        },
+        {
+            "name": "fetch",
+            "description": "Fetch one live LucyESL job listing by its id as a document with its title, its URL and a plain-text body giving the employer, pay, hours, housing, visas, benefits, dates and the facts the advert left unstated. An id that has closed or expired returns an error naming it.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The listing's numeric id, such as \"290\""
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "search_jobs",
+            "description": "Filter the live LucyESL board of English-teaching jobs in South Korea: region, student age, housing, visa, schedule, contract, setting, direct hire, minimum salary, free text. Returns the number that match and a page of structured records; pay in KRW per month unless stated otherwise; null means the advert did not say.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "enum": [
+                            "seoul",
+                            "gyeonggi",
+                            "busan",
+                            "daegu",
+                            "daejeon",
+                            "gwangju",
+                            "ulsan",
+                            "sejong",
+                            "gangwon",
+                            "chungcheong",
+                            "jeolla",
+                            "gyeongsang",
+                            "jeju"
+                        ],
+                        "description": "Region of South Korea (gyeonggi includes Incheon)"
+                    },
+                    "age": {
+                        "type": "string",
+                        "enum": [
+                            "kindergarten",
+                            "elementary",
+                            "middle",
+                            "high",
+                            "adults",
+                            "adults_only"
+                        ],
+                        "description": "Student age group; adults_only means adults and nobody younger"
+                    },
+                    "housing": {
+                        "type": "string",
+                        "enum": [
+                            "provided",
+                            "allowance",
+                            "none"
+                        ],
+                        "description": "Housing provided, an allowance instead, or none"
+                    },
+                    "visa": {
+                        "type": "string",
+                        "enum": [
+                            "e2",
+                            "f",
+                            "other"
+                        ],
+                        "description": "e2 = E-2 sponsorship, f = F-series visa holders"
+                    },
+                    "schedule": {
+                        "type": "string",
+                        "enum": [
+                            "fulltime",
+                            "parttime",
+                            "camp",
+                            "substitute"
+                        ],
+                        "description": "Full-time, part-time, camp or substitute"
+                    },
+                    "contract": {
+                        "type": "string",
+                        "enum": [
+                            "employee",
+                            "contractor"
+                        ],
+                        "description": "An employment contract (employee) or a contractor agreement"
+                    },
+                    "setting": {
+                        "type": "string",
+                        "enum": [
+                            "academy",
+                            "corporate",
+                            "school",
+                            "home"
+                        ],
+                        "description": "Where the teaching happens: the academy, a company, a school or a student's home"
+                    },
+                    "delivery": {
+                        "type": "string",
+                        "enum": [
+                            "in_person",
+                            "online",
+                            "hybrid"
+                        ],
+                        "description": "In person, online or hybrid"
+                    },
+                    "format": {
+                        "type": "string",
+                        "enum": [
+                            "group",
+                            "small_group",
+                            "one_to_one"
+                        ],
+                        "description": "Class shape: group, small group (up to 4) or one to one"
+                    },
+                    "specialty": {
+                        "type": "string",
+                        "enum": [
+                            "ielts",
+                            "toefl",
+                            "toeic_opic",
+                            "sat_ap",
+                            "business",
+                            "esp",
+                            "phonics",
+                            "writing_debate",
+                            "subject",
+                            "bilingual",
+                            "training",
+                            "content"
+                        ],
+                        "description": "What is taught besides general English, such as IELTS, business English or phonics"
+                    },
+                    "direct_only": {
+                        "type": "boolean",
+                        "description": "Only employers hiring directly (no recruiters or agencies)"
+                    },
+                    "min_salary": {
+                        "type": "integer",
+                        "description": "Minimum monthly pay in KRW; snaps down to the board's steps 2000000, 2300000, 2600000, 3000000"
+                    },
+                    "q": {
+                        "type": "string",
+                        "description": "Words to match in the title, city or employer name"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "description": "Page of results, from 1"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 50,
+                        "description": "Records per page: 25 by default, at most 50"
+                    }
+                }
+            }
+        },
+        {
+            "name": "get_job",
+            "description": "Get one live LucyESL job listing by its numeric id as a structured record: employer and employer type, region, pay in KRW, teaching and on-site hours, housing, visas, benefits, contract length, start date, dates, and the facts the advert left unstated (null means not stated). An id that has closed or expired returns an error naming it.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "description": "The listing's numeric id, such as 290"
+                    }
+                },
+                "required": [
+                    "id"
+                ]
+            }
+        },
+        {
+            "name": "salary_stats",
+            "description": "English-teacher salary statistics for South Korea computed from the live listings: median, quartiles, by region, by employer type, effective pay per teaching hour, disclosure rates, housing. Each median comes with the number of adverts behind it. CC BY 4.0.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {}
+            }
+        },
+        {
+            "name": "disclosure_stats",
+            "description": "How many live Korean ESL job adverts state the salary, hours, severance, pension, insurance, airfare, vacation and split shifts: for each, the number that state it, out of how many, and the percentage. CC BY 4.0.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {}
+            }
+        },
+        {
+            "name": "market_stats",
+            "description": "Live English-teaching job adverts in South Korea counted by region: how many in each, direct hire against recruiters, how many state total on-site hours, and the median advertised salary where the sample allows. Counts of adverts, not of employers. CC BY 4.0.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {}
+            }
+        }
+    ]
+}
